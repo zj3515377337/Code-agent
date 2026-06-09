@@ -16,51 +16,39 @@
 
 ## 架构图
 
-```mermaid
-flowchart TB
-    subgraph Entry[入口层]
-        CLI[CLI]
-        WEB[Web UI]
-    end
+```
+                    ┌──────────────────────┐
+                    │      入口层           │
+                    │  CLI / Web UI        │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │  Planner 规划智能体    │
+                    └──────────┬───────────┘
+                               │ 计划
+                               ▼
+              ┌────────────────┴────────────────┐
+              │         Coder (ReAct)           │◄──── Reminder 行为约束
+              └────────┬────────────┬───────────┘
+                       │            │
+         ┌─────────────┼──────┐     │ 失败 → Reflector 反思 ──┐
+         │             │      │     └──────────────────────────┘
+         ▼             ▼      ▼
+    ┌─────────┐  ┌─────────┐  ┌─────────┐
+    │ 文件读写 │  │ 代码搜索 │  │ 编辑执行 │
+    │ read_*  │  │ search_*│  │ str_*   │
+    └─────────┘  └─────────┘  └─────────┘
+         │             │           │
+         └─────────────┼───────────┘
+                       │
+                       ▼
+              ┌──────────────┐
+              │ AST 符号索引  │
+              │ 语义意图摘要  │
+              └──────────────┘
 
-    subgraph Agents[多 Agent 协作层]
-        direction TB
-        PLAN[Planner]
-        CODE[Coder]
-        REV[Reviewer]
-        REFLECT[Reflector]
-        REMIND[Reminder]
-    end
-
-    subgraph Tools[工具层]
-        READ[read_file]
-        SEARCH[search_text/class/method]
-        EDIT[str_replace/replace_function]
-        EXEC[execute/run_pytest]
-    end
-
-    subgraph Memory[记忆层]
-        WORK[Working Memory]
-        EPIS[Episodic Memory]
-        COMP[Compactor]
-    end
-
-    subgraph Index[索引层]
-        AST[AST 符号索引]
-        SEM[语义意图摘要]
-    end
-
-    Entry --> PLAN
-    PLAN --> CODE
-    CODE --> Tools
-    CODE <--> Memory
-    CODE --> REV
-    REV -->|通过| Done
-    REV -->|反馈| CODE
-    CODE -->|失败| REFLECT
-    REFLECT --> CODE
-    REMIND --> CODE
-    Tools --> Index
+    完成 → Reviewer 审查 → 通过 ✅ / 反馈 🔄 继续修改
 ```
 
 ## 快速开始
