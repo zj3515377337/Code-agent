@@ -1,0 +1,1 @@
+修复 math_utils.py 中的 bug：is_prime 函数对 0 和 1 返回了 True（应返回 False），gcd 函数用了加法而不是减法导致死循环。请修复这些 bug，让所有测试通过。

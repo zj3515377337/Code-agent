@@ -1,0 +1,1 @@
+修复 search.py 中的 bug：linear_search 未找到时返回了 0 应改为 -1；binary_search 循环条件错了应是 left <= right；find_max 空列表时崩溃应抛 ValueError("列表不能为空")。请修复让所有测试通过。

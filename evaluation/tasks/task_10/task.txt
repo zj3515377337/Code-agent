@@ -1,0 +1,1 @@
+修复 validator.py 中的 bug：validate_email 正则太简单，需要 @ 后面必须有点号；validate_password 只检查了长度，需要同时检查大小写字母和数字；sanitize_input 没移除 HTML 标签（用正则 r'<[^>]+>' 移除）；mask_phone 没验证手机号长度，长度不为 11 时应抛 ValueError("手机号必须为 11 位")。请修复让所有测试通过。

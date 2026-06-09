@@ -1,0 +1,1 @@
+修复 stack.py 中的 bug：pop 和 peek 在空栈时没有抛出 IndexError("stack is empty")，peek 返回了栈底而不是栈顶，is_empty 逻辑反了。请修复让所有测试通过。

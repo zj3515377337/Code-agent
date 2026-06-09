@@ -1,0 +1,1 @@
+修复 bank.py 中的 bug：deposit 和 withdraw 没有检查金额是否大于 0（应抛 ValueError("金额必须大于 0")）；withdraw 没有检查余额是否足够（应抛 ValueError("余额不足")）；transfer 只扣了自己的钱没有给对方加钱。请修复让所有测试通过。

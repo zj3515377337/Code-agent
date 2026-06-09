@@ -1,0 +1,1 @@
+修复 dict_utils.py 中的 bug：parse_json 没处理无效 JSON（应抛 ValueError("无效的 JSON")）；get_nested 路径不存在时崩溃（应返回 default）；merge_dicts 只做了浅合并，嵌套字典需要递归合并。请修复让所有测试通过。

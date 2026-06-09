@@ -1,0 +1,7 @@
+这是一个电商订单系统的 bug，涉及 3 个文件的交互。请修复所有 bug 让测试通过：
+
+1. cart.py：Cart.add_item 没有检查 quantity > 0；Cart.total 在商品数量为 0 时计算错误
+2. discount.py：DiscountEngine.apply_discount 的满减逻辑有 off-by-one 错误（应该是 >= 不是 >）；会员折扣和满减没有叠加
+3. order.py：OrderService.create_order 没有检查库存是否充足；OrderService.cancel_order 没有恢复库存
+
+请先读取 test_ecommerce.py 了解测试期望，再依次修复 cart.py、discount.py、order.py。

@@ -1,0 +1,1 @@
+修复 linked_list.py 中的 bug：append 和 prepend 没有更新 length 计数器；reverse 方法实现错了，需要正确实现原地反转链表（prev/current/next 三指针法）。请修复让所有测试通过。

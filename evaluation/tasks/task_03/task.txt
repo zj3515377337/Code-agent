@@ -1,0 +1,1 @@
+修复 str_ops.py 中的 bug：reverse_string 没有真正反转字符串；is_palindrome 没有忽略大小写和空格；count_vowels 没有统计大写元音。请修复让所有测试通过。

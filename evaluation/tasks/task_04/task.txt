@@ -1,0 +1,1 @@
+修复 list_utils.py 中的 bug：flatten 只展平了一层没有递归处理深层嵌套；chunk 在 size<=0 时会死循环应抛出 ValueError；unique_sorted 没有去重只排序了。请修复让所有测试通过。

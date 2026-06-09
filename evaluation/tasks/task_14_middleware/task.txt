@@ -1,0 +1,1 @@
+HTTP 中间件管道有 bug：中间件的 before/after 钩子执行顺序不对，错误处理逻辑有误。请先阅读 test_middleware.py 了解期望行为，再定位并修复 bug。涉及 request.py、middleware.py、pipeline.py 三个文件。

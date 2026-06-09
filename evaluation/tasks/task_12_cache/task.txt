@@ -1,0 +1,6 @@
+这是一个缓存系统的 bug，涉及 2 个文件的交互。请修复所有 bug 让测试通过：
+
+1. lru_cache.py：LRUCache.get 在 key 存在时没有刷新访问顺序（LRU 语义）；LRUCache.put 在容量满时驱逐的不是最久未使用的；LRUCache 的 size() 返回了 capacity 而不是实际元素数
+2. cache_manager.py：CacheManager.get_with_loader 在缓存未命中时没有调用 loader 加载数据并回填缓存；CacheManager.invalidate 没有真正删除缓存条目
+
+请先读取 test_cache.py 了解测试期望，再修复 lru_cache.py 和 cache_manager.py。

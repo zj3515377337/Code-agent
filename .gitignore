@@ -1,0 +1,42 @@
+# API Key
+.env
+
+# 评测结果文件
+evaluation/results/
+evaluation/swebench/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 测试缓存
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 日志
+logs/
+*.log
+
+# 测试产物
+hello.py
+
+# 临时文件
+*.backup
+*.tmp

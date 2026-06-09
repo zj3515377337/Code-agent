@@ -1,0 +1,1 @@
+事件系统有 bug：当事件处理器抛出异常时，后续处理器不执行且异常丢失。请先阅读 test_event_system.py 了解期望行为，再定位并修复 bug。涉及 event.py、dispatcher.py、store.py 三个文件的交互。

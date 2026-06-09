@@ -1,0 +1,1 @@
+模板引擎有 bug：变量替换不支持嵌套属性访问（如 user.name），未定义变量应渲染为空字符串而不是抛异常，for 循环标签解析有误。请先阅读 test_template.py 了解期望行为，再定位并修复 bug。涉及 context.py、tokenizer.py、renderer.py 三个文件。
