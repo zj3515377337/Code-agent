@@ -18,46 +18,48 @@
 
 ```mermaid
 flowchart TB
-    subgraph Entry["入口层"]
-        CLI["CLI (Typer)"]
-        WEB["Web UI (Streamlit)"]
+    subgraph Entry[入口层]
+        CLI[CLI]
+        WEB[Web UI]
     end
 
-    subgraph Agents["多 Agent 协作层"]
-        PLAN["Planner 规划智能体"]
-        CODE["Coder 执行智能体 (ReAct)"]
-        REV["Reviewer 审查智能体"]
-        REFLECT["Reflector 反思"]
-        REMIND["Reminder 行为约束"]
+    subgraph Agents[多 Agent 协作层]
+        direction TB
+        PLAN[Planner]
+        CODE[Coder]
+        REV[Reviewer]
+        REFLECT[Reflector]
+        REMIND[Reminder]
     end
 
-    subgraph Tools["工具层 (15 个)"]
-        READ["read_file / list_dir"]
-        SEARCH["search_text / search_intent / search_class / search_method"]
-        EDIT["str_replace / replace_function / write_file"]
-        EXEC["execute / run_pytest"]
+    subgraph Tools[工具层]
+        READ[read_file]
+        SEARCH[search_text/class/method]
+        EDIT[str_replace/replace_function]
+        EXEC[execute/run_pytest]
     end
 
-    subgraph Memory["记忆层"]
-        WORK["Working Memory"]
-        EPIS["Episodic Memory"]
-        COMP["Compactor 压缩"]
+    subgraph Memory[记忆层]
+        WORK[Working Memory]
+        EPIS[Episodic Memory]
+        COMP[Compactor]
     end
 
-    subgraph Index["索引层"]
-        AST["AST 符号索引"]
-        SEM["语义意图摘要"]
+    subgraph Index[索引层]
+        AST[AST 符号索引]
+        SEM[语义意图摘要]
     end
 
     Entry --> PLAN
-    PLAN -->|"计划"| CODE
-    CODE -->|"执行"| Tools
-    CODE <-->|"上下文"| Memory
-    CODE -->|"完成"| REV
-    REV -->|"通过"| Done["✅ 完成"]
-    REV -->|"反馈"| CODE
-    CODE -->|"失败"| REFLECT --> CODE
-    REMIND -->|"约束检查"| CODE
+    PLAN --> CODE
+    CODE --> Tools
+    CODE <--> Memory
+    CODE --> REV
+    REV -->|通过| Done
+    REV -->|反馈| CODE
+    CODE -->|失败| REFLECT
+    REFLECT --> CODE
+    REMIND --> CODE
     Tools --> Index
 ```
 
