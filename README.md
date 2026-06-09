@@ -174,15 +174,13 @@ code-agent/
 
 ## 论文基础
 
-本项目的设计决策基于 12 篇 2024-2026 年代码智能体前沿论文：
+本项目的设计决策参考了以下前沿论文：
 
-- **OPENDEV** (2026)：脚手架/运行时分离、5 阶段压缩、事件驱动提醒
-- **SWE-agent** (NeurIPS 2024)：ACI 4 原则、100 行文件窗口、lint guardrail
-- **AutoCodeRover** (ISSTA 2024)：7 个 AST search API
-- **CodeStruct** (AWS, 2026)：结构化动作空间、AST 级别编辑
+- **SWE-agent** (NeurIPS 2024)：Agent-Computer Interface 设计原则
+- **AutoCodeRover** (ISSTA 2024)：AST 结构化代码搜索
+- **OPENDEV** (2026)：Plan-Execute 双层架构、事件驱动提醒
+- **CodeStruct** (2026)：结构化动作空间、AST 级别编辑
 - **Behavioral Drivers** (2026)：过早提交/上下文不足检测
-- **Agentic RAG with Reflections** (2026)：检索阶段反思
-- **Symbolic-Semantic Indexing** (2026)：符号+语义双层索引
 
 ## 评测体系
 
@@ -217,16 +215,6 @@ Reflector 93% → 87%  ↓6%   ← 失败后反思重试
 - **task_01 ~ task_10**：单文件 Python bug 修复（基础难度）
 - **task_11 ~ task_12**：多文件交互 bug（中等难度）
 - **task_13 ~ task_15**：需要跨文件推理 + 测试驱动的复杂 bug（高难度）
-
-## 还能改进什么
-
-| 改进项 | 投入 | 面试价值 |
-|---|---|---|
-| Docker 沙箱执行 | 1 天 | 展示安全意识 |
-| 异步并发评测 | 1 天 | 生产级能力 |
-| Token 精确计数（替代消息条数） | 半天 | 成本优化 |
-| Agent 决策 trace 可视化 | 半天 | 演示效果好 |
-| 支持更多 LLM 提供商（Claude/GPT） | 半天 | 灵活性 |
 
 ## License
 
